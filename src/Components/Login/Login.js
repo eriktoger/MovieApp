@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Text, View, TextInput } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { styles } from "./styles";
-import { login } from "../../services/loginService";
+import { login } from "../../services/userService";
 import { LoginContext } from "../../Context";
 
 export const Login = () => {

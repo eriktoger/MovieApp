@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Text, View, TextInput, Switch } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { styles } from "./styles";
-import { createAccount } from "../../services/loginService";
+import { createAccount } from "../../services/userService";
 import { LoginContext } from "../../Context";
 
 const CreateAccount = () => {

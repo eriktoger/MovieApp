@@ -4,7 +4,7 @@ const { baseUrl } = ENV_VARS;
 
 export const login = async (name, password) => {
   try {
-    const response = await fetch(`${baseUrl}/login`, {
+    const response = await fetch(`${baseUrl}/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export const login = async (name, password) => {
 
 export const createAccount = async (name, password) => {
   try {
-    const response = await fetch(`${baseUrl}/createUser`, {
+    const response = await fetch(`${baseUrl}/user/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
