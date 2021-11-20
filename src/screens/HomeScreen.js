@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   View,
@@ -13,7 +13,7 @@ import { AuthContext } from "../Context";
 import { getMovie } from "../services/movieService";
 
 const HomeScreen = ({ navigation, route }) => {
-  const user = React.useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [movieError, setMovieError] = useState();
   const {
     control,

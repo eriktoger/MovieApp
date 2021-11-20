@@ -17,15 +17,9 @@ import getFavorites, {
 } from "../services/favoritesService";
 
 const MovieScreen = ({ route }) => {
-  const user = React.useContext(AuthContext);
-  const {
-    posterUrl,
-    title,
-    released,
-    ratings,
-    plot,
-    imdbID,
-  } = route.params.movie;
+  const { user } = useContext(AuthContext);
+  const { posterUrl, title, released, ratings, plot, imdbID } =
+    route.params.movie;
 
   const [imageSize, setImageSize] = useState({ height: 0, width: 0 });
   const [isFavorite, setIsFavorite] = useState(false);

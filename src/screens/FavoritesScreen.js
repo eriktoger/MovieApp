@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   View,
   StyleSheet,
@@ -14,7 +14,7 @@ import getFavorites, {
 import Icon from "react-native-vector-icons/FontAwesome";
 import { getMovie } from "../services/movieService";
 
-const Favorite = ({ item, navigation, user }) => {
+const Favorite = ({ item, navigation, user, setMovieError }) => {
   const [isFavorite, setIsFavorite] = useState(true);
 
   const onPress = async () => {
@@ -58,7 +58,7 @@ const Favorite = ({ item, navigation, user }) => {
 
 const Favorites = ({ navigation }) => {
   const [movieError, setMovieError] = useState();
-  const user = React.useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [favorites, setFavorites] = useState(null);
 
   useEffect(() => {
@@ -82,7 +82,12 @@ const Favorites = ({ navigation }) => {
       <FlatList
         data={favorites}
         renderItem={({ item }) => (
-          <Favorite item={item} navigation={navigation} user={user} />
+          <Favorite
+            item={item}
+            navigation={navigation}
+            user={user}
+            setMovieError={setMovieError}
+          />
         )}
         keyExtractor={(item) => item.imdbID}
       />
@@ -96,9 +101,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   error: {
+    alignSelf: "center",
     color: "red",
     marginBottom: 20,
     marginTop: 20,
+    fontSize: 20,
   },
   favorite: {
     flexDirection: "row",

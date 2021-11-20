@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Text, View, TextInput } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { styles } from "./styles";
 import { login } from "../../services/userService";
-import { LoginContext } from "../../Context";
+import { AuthContext } from "../../Context";
 
 export const Login = () => {
-  const setUser = React.useContext(LoginContext);
-  const [loginError, setLoginError] = useState(false);
+  const { setUser } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState();
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  /*
-  useEffect(() => {
-    login("erik", "erik").then((user) => setUser(user));
-  }, []);
-*/
   const onLogin = async (data) => {
     const user = await login(data.name, data.password);
     if (user?.token) {

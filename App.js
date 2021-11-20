@@ -14,15 +14,15 @@ export default function App() {
 
   if (!user) {
     return (
-      <LoginContext.Provider value={setUser}>
+      <AuthContext.Provider value={{ user, setUser }}>
         <LoginPage />
-      </LoginContext.Provider>
+      </AuthContext.Provider>
     );
   }
 
   return (
     <NavigationContainer>
-      <AuthContext.Provider value={user}>
+      <AuthContext.Provider value={{ user, setUser }}>
         <Stack.Navigator initialRouteName={"Home"}>
           <Stack.Screen name={"Home"} component={HomeScreen} />
           <Stack.Screen name={"Movie"} component={MovieScreen} />
